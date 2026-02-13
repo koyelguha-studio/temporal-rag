@@ -1,0 +1,338 @@
+[
+  {
+    "query_id": "Q_0",
+    "complexity": "Chain-2",
+    "naive_correct": false,
+    "agent_correct": true,
+    "agent_path": [
+      "Doc_0_Base",
+      "Doc_0_Amd_1",
+      "Doc_0_Amd_2"
+    ]
+  },
+  {
+    "query_id": "Q_2",
+    "complexity": "Chain-2",
+    "naive_correct": false,
+    "agent_correct": false,
+    "agent_path": [
+      "Doc_2_Base",
+      "Doc_2_Amd_1"
+    ]
+  },
+  {
+    "query_id": "Q_3",
+    "complexity": "Chain-1",
+    "naive_correct": false,
+    "agent_correct": true,
+    "agent_path": [
+      "Doc_3_Base",
+      "Doc_3_Amd_1"
+    ]
+  },
+  {
+    "query_id": "Q_4",
+    "complexity": "Chain-1",
+    "naive_correct": false,
+    "agent_correct": true,
+    "agent_path": [
+      "Doc_4_Base",
+      "Doc_4_Amd_1"
+    ]
+  },
+  {
+    "query_id": "Q_5",
+    "complexity": "Chain-4",
+    "naive_correct": false,
+    "agent_correct": false,
+    "agent_path": [
+      "Doc_5_Base"
+    ]
+  },
+  {
+    "query_id": "Q_6",
+    "complexity": "Chain-3",
+    "naive_correct": false,
+    "agent_correct": true,
+    "agent_path": [
+      "Doc_6_Base",
+      "Doc_6_Amd_1",
+      "Doc_6_Amd_2",
+      "Doc_6_Amd_3"
+    ]
+  },
+  {
+    "query_id": "Q_8",
+    "complexity": "Chain-3",
+    "naive_correct": false,
+    "agent_correct": false,
+    "agent_path": [
+      "Doc_8_Base",
+      "Doc_8_Amd_1",
+      "Doc_8_Amd_2"
+    ]
+  },
+  {
+    "query_id": "Q_9",
+    "complexity": "Chain-2",
+    "naive_correct": true,
+    "agent_correct": true,
+    "agent_path": [
+      "Doc_9_Base",
+      "Doc_9_Amd_1",
+      "Doc_9_Amd_2"
+    ]
+  },
+  {
+    "query_id": "Q_11",
+    "complexity": "Chain-1",
+    "naive_correct": false,
+    "agent_correct": false,
+    "agent_path": [
+      "Doc_11_Base"
+    ]
+  },
+  {
+    "query_id": "Q_12",
+    "complexity": "Chain-3",
+    "naive_correct": false,
+    "agent_correct": false,
+    "agent_path": [
+      "Doc_12_Base"
+    ]
+  },
+  {
+    "query_id": "Q_13",
+    "complexity": "Chain-3",
+    "naive_correct": false,
+    "agent_correct": true,
+    "agent_path": [
+      "Doc_13_Base",
+      "Doc_13_Amd_1",
+      "Doc_13_Amd_2",
+      "Doc_13_Amd_3"
+    ]
+  },
+  {
+    "query_id": "Q_15",
+    "complexity": "Chain-3",
+    "naive_correct": false,
+    "agent_correct": false,
+    "agent_path": [
+      "Doc_15_Base"
+    ]
+  },
+  {
+    "query_id": "Q_16",
+    "complexity": "Chain-1",
+    "naive_correct": true,
+    "agent_correct": true,
+    "agent_path": [
+      "Doc_16_Base",
+      "Doc_16_Amd_1"
+    ]
+  },
+  {
+    "query_id": "Q_17",
+    "complexity": "Chain-1",
+    "naive_correct": false,
+    "agent_correct": true,
+    "agent_path": [
+      "Doc_17_Base",
+      "Doc_17_Amd_1"
+    ]
+  },
+  {
+    "query_id": "Q_21",
+    "complexity": "Chain-1",
+    "naive_correct": false,
+    "agent_correct": false,
+    "agent_path": [
+      "Doc_21_Base"
+    ]
+  },
+  {
+    "query_id": "Q_22",
+    "complexity": "Chain-1",
+    "naive_correct": false,
+    "agent_correct": true,
+    "agent_path": [
+      "Doc_22_Base",
+      "Doc_22_Amd_1"
+    ]
+  },
+  {
+    "query_id": "Q_26",
+    "complexity": "Chain-1",
+    "naive_correct": false,
+    "agent_correct": true,
+    "agent_path": [
+      "Doc_26_Base",
+      "Doc_26_Amd_1"
+    ]
+  },
+  {
+    "query_id": "Q_28",
+    "complexity": "Chain-1",
+    "naive_correct": false,
+    "agent_correct": false,
+    "agent_path": [
+      "Doc_28_Base"
+    ]
+  },
+  {
+    "query_id": "Q_29",
+    "complexity": "Chain-2",
+    "naive_correct": false,
+    "agent_correct": true,
+    "agent_path": [
+      "Doc_29_Base",
+      "Doc_29_Amd_1",
+      "Doc_29_Amd_2"
+    ]
+  },
+  {
+    "query_id": "Q_30",
+    "complexity": "Chain-1",
+    "naive_correct": false,
+    "agent_correct": false,
+    "agent_path": [
+      "Doc_30_Base"
+    ]
+  },
+  {
+    "query_id": "Q_34",
+    "complexity": "Chain-1",
+    "naive_correct": false,
+    "agent_correct": true,
+    "agent_path": [
+      "Doc_34_Base",
+      "Doc_34_Amd_1"
+    ]
+  },
+  {
+    "query_id": "Q_35",
+    "complexity": "Chain-2",
+    "naive_correct": true,
+    "agent_correct": false,
+    "agent_path": [
+      "Doc_35_Base"
+    ]
+  },
+  {
+    "query_id": "Q_36",
+    "complexity": "Chain-4",
+    "naive_correct": false,
+    "agent_correct": false,
+    "agent_path": [
+      "Doc_36_Base",
+      "Doc_36_Amd_1"
+    ]
+  },
+  {
+    "query_id": "Q_37",
+    "complexity": "Chain-2",
+    "naive_correct": false,
+    "agent_correct": true,
+    "agent_path": [
+      "Doc_37_Base",
+      "Doc_37_Amd_1",
+      "Doc_37_Amd_2"
+    ]
+  },
+  {
+    "query_id": "Q_38",
+    "complexity": "Chain-1",
+    "naive_correct": false,
+    "agent_correct": false,
+    "agent_path": [
+      "Doc_38_Base"
+    ]
+  },
+  {
+    "query_id": "Q_39",
+    "complexity": "Chain-4",
+    "naive_correct": false,
+    "agent_correct": true,
+    "agent_path": [
+      "Doc_39_Base",
+      "Doc_39_Amd_1",
+      "Doc_39_Amd_2",
+      "Doc_39_Amd_3",
+      "Doc_39_Amd_4"
+    ]
+  },
+  {
+    "query_id": "Q_42",
+    "complexity": "Chain-2",
+    "naive_correct": false,
+    "agent_correct": false,
+    "agent_path": [
+      "Doc_42_Base"
+    ]
+  },
+  {
+    "query_id": "Q_43",
+    "complexity": "Chain-4",
+    "naive_correct": false,
+    "agent_correct": true,
+    "agent_path": [
+      "Doc_43_Base",
+      "Doc_43_Amd_1",
+      "Doc_43_Amd_2",
+      "Doc_43_Amd_3",
+      "Doc_43_Amd_4"
+    ]
+  },
+  {
+    "query_id": "Q_44",
+    "complexity": "Chain-2",
+    "naive_correct": false,
+    "agent_correct": true,
+    "agent_path": [
+      "Doc_44_Base",
+      "Doc_44_Amd_1",
+      "Doc_44_Amd_2"
+    ]
+  },
+  {
+    "query_id": "Q_45",
+    "complexity": "Chain-1",
+    "naive_correct": false,
+    "agent_correct": true,
+    "agent_path": [
+      "Doc_45_Base",
+      "Doc_45_Amd_1"
+    ]
+  },
+  {
+    "query_id": "Q_46",
+    "complexity": "Chain-1",
+    "naive_correct": true,
+    "agent_correct": false,
+    "agent_path": [
+      "Doc_46_Base"
+    ]
+  },
+  {
+    "query_id": "Q_47",
+    "complexity": "Chain-1",
+    "naive_correct": false,
+    "agent_correct": true,
+    "agent_path": [
+      "Doc_47_Base",
+      "Doc_47_Amd_1"
+    ]
+  },
+  {
+    "query_id": "Q_48",
+    "complexity": "Chain-2",
+    "naive_correct": false,
+    "agent_correct": true,
+    "agent_path": [
+      "Doc_48_Base",
+      "Doc_48_Amd_1",
+      "Doc_48_Amd_2"
+    ]
+  }
+]
