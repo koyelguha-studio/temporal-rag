@@ -1,0 +1,155 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 800px;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "lightblue", "id": "LCID_2024-10-01_CONTRACT", "label": "Production Pricing Agreement", "shape": "dot", "title": "Date: 2024-10-01\u003cbr\u003eProduction Pricing Agreement"}, {"color": "lightblue", "id": "LCID_2022-12-01_CONTRACT", "label": "LCID_2022-12-01_CONTRACT", "shape": "dot", "title": "Date: \u003cbr\u003e"}, {"color": "lightblue", "id": "GM_2023-10-03_CONTRACT", "label": "Revolving Credit Agreement", "shape": "dot", "title": "Date: 2023-10-03\u003cbr\u003eRevolving Credit Agreement"}, {"color": "lightblue", "id": "GM_2023-03-31_CONTRACT", "label": "Guarantee Agreement", "shape": "dot", "title": "Date: 2023-03-31\u003cbr\u003eGuarantee Agreement"}, {"color": "lightblue", "id": "GM_2018-04-18_CONTRACT", "label": "GM_2018-04-18_CONTRACT", "shape": "dot", "title": "Date: \u003cbr\u003e"}, {"color": "lightblue", "id": "TSLA_2025-09-03_CONTRACT", "label": "Equity Incentive Plan", "shape": "dot", "title": "Date: 2025-09-03\u003cbr\u003eEquity Incentive Plan"}, {"color": "lightblue", "id": "TSLA_2019-04-18_CONTRACT", "label": "TSLA_2019-04-18_CONTRACT", "shape": "dot", "title": "Date: \u003cbr\u003e"}, {"color": "lightblue", "id": "TSLA_2010-01-01_CONTRACT", "label": "TSLA_2010-01-01_CONTRACT", "shape": "dot", "title": "Date: \u003cbr\u003e"}, {"color": "lightblue", "id": "LCID_2025-04-02_CONTRACT", "label": "Capped Call Confirmation", "shape": "dot", "title": "Date: 2025-04-02\u003cbr\u003eCapped Call Confirmation"}, {"color": "lightblue", "id": "GM_2025-03-25_CONTRACT", "label": "FIFTH AMENDED AND RESTATED 5-YEAR REVOLVING CREDIT AGREEMENT", "shape": "dot", "title": "Date: 2025-03-25\u003cbr\u003eFIFTH AMENDED AND RESTATED 5-YEAR REVOLVING CREDIT AGREEMENT"}, {"color": "lightblue", "id": "F_2024-03-14_CONTRACT", "label": "Defined Benefit Supplemental Executive Retirement Plan", "shape": "dot", "title": "Date: 2024-03-14\u003cbr\u003eDefined Benefit Supplemental Executive Retirement Plan"}, {"color": "lightblue", "id": "F_1985-01-01_CONTRACT", "label": "F_1985-01-01_CONTRACT", "shape": "dot", "title": "Date: \u003cbr\u003e"}, {"color": "lightblue", "id": "RIVN_2023-09-26_CONTRACT", "label": "Amendment", "shape": "dot", "title": "Date: 2023-09-26\u003cbr\u003eAmendment"}, {"color": "lightblue", "id": "RIVN_2022-05-02_CONTRACT", "label": "RIVN_2022-05-02_CONTRACT", "shape": "dot", "title": "Date: \u003cbr\u003e"}, {"color": "lightblue", "id": "F_2024-02-07_CONTRACT", "label": "Annual Performance Bonus Plan Metrics", "shape": "dot", "title": "Date: 2024-02-07\u003cbr\u003eAnnual Performance Bonus Plan Metrics"}, {"color": "lightblue", "id": "F_2023-06-30_CONTRACT", "label": "F_2023-06-30_CONTRACT", "shape": "dot", "title": "Date: \u003cbr\u003e"}, {"color": "lightblue", "id": "RIVN_2024-04-29_CONTRACT", "label": "REV TAX CREDIT AGREEMENT (TIER 2)", "shape": "dot", "title": "Date: 2024-04-29\u003cbr\u003eREV TAX CREDIT AGREEMENT (TIER 2)"}, {"color": "lightblue", "id": "LCID_2025-11-11_CONTRACT", "label": "Amendment", "shape": "dot", "title": "Date: 2025-11-11\u003cbr\u003eAmendment"}, {"color": "lightblue", "id": "LCID_2021-02-22_CONTRACT", "label": "Amendment No. 3 to Investor Rights Agreement", "shape": "dot", "title": "Date: 2021-02-22\u003cbr\u003eAmendment No. 3 to Investor Rights Agreement"}, {"color": "lightblue", "id": "LCID_2025-07-16_CONTRACT", "label": "Vehicle Production Agreement", "shape": "dot", "title": "Date: 2025-07-16\u003cbr\u003eVehicle Production Agreement"}, {"color": "lightblue", "id": "RIVN_2025-01-16_CONTRACT", "label": "Loan Arrangement and Reimbursement and Sponsor Support Agreement", "shape": "dot", "title": "Date: 2025-01-16\u003cbr\u003eLoan Arrangement and Reimbursement and Sponsor Support Agreement"}, {"color": "lightblue", "id": "RIVN_2024-11-25_CONTRACT", "label": "RIVN_2024-11-25_CONTRACT", "shape": "dot", "title": "Date: \u003cbr\u003e"}, {"color": "lightblue", "id": "F_2024-04-22_CONTRACT", "label": "TWENTY-FIRST AMENDMENT TO THE CREDIT AGREEMENT", "shape": "dot", "title": "Date: 2024-04-22\u003cbr\u003eTWENTY-FIRST AMENDMENT TO THE CREDIT AGREEMENT"}, {"color": "lightblue", "id": "F_2006-12-15_CONTRACT", "label": "F_2006-12-15_CONTRACT", "shape": "dot", "title": "Date: \u003cbr\u003e"}, {"color": "lightblue", "id": "F_2009-11-24_CONTRACT", "label": "F_2009-11-24_CONTRACT", "shape": "dot", "title": "Date: \u003cbr\u003e"}, {"color": "lightblue", "id": "F_2014-04-30_CONTRACT", "label": "F_2014-04-30_CONTRACT", "shape": "dot", "title": "Date: \u003cbr\u003e"}, {"color": "lightblue", "id": "F_2015-04-30_CONTRACT", "label": "F_2015-04-30_CONTRACT", "shape": "dot", "title": "Date: \u003cbr\u003e"}, {"color": "lightblue", "id": "F_2021-09-29_CONTRACT", "label": "F_2021-09-29_CONTRACT", "shape": "dot", "title": "Date: \u003cbr\u003e"}, {"color": "lightblue", "id": "F_2022-06-23_CONTRACT", "label": "F_2022-06-23_CONTRACT", "shape": "dot", "title": "Date: \u003cbr\u003e"}, {"color": "lightblue", "id": "F_2023-04-26_CONTRACT", "label": "F_2023-04-26_CONTRACT", "shape": "dot", "title": "Date: \u003cbr\u003e"}, {"color": "lightblue", "id": "LCID_2023-08-07_CONTRACT", "label": "Electric Vehicles Purchase Agreement", "shape": "dot", "title": "Date: 2023-08-07\u003cbr\u003eElectric Vehicles Purchase Agreement"}, {"color": "lightblue", "id": "LCID_2022-04-15_CONTRACT", "label": "LCID_2022-04-15_CONTRACT", "shape": "dot", "title": "Date: \u003cbr\u003e"}, {"color": "lightblue", "id": "GM_2023-11-29_CONTRACT", "label": "Master Confirmation", "shape": "dot", "title": "Date: 2023-11-29\u003cbr\u003eMaster Confirmation"}, {"color": "lightblue", "id": "LCID_2025-11-04_CONTRACT", "label": "Amendment to Credit Agreement", "shape": "dot", "title": "Date: 2025-11-04\u003cbr\u003eAmendment to Credit Agreement"}, {"color": "lightblue", "id": "LCID_2024-08-04_CONTRACT", "label": "SUBSCRIPTION AGREEMENT", "shape": "dot", "title": "Date: 2024-08-04\u003cbr\u003eSUBSCRIPTION AGREEMENT"}, {"color": "lightblue", "id": "F_2023-02-08_CONTRACT", "label": "Annual Performance Bonus Plan Metrics", "shape": "dot", "title": "Date: 2023-02-08\u003cbr\u003eAnnual Performance Bonus Plan Metrics"}, {"color": "lightblue", "id": "F_2022-12-31_CONTRACT", "label": "F_2022-12-31_CONTRACT", "shape": "dot", "title": "Date: \u003cbr\u003e"}, {"color": "lightblue", "id": "LCID_2026-01-20_CONTRACT", "label": "Amendment", "shape": "dot", "title": "Date: 2026-01-20\u003cbr\u003eAmendment"}, {"color": "lightblue", "id": "LCID_2024-11-15_CONTRACT", "label": "LCID_2024-11-15_CONTRACT", "shape": "dot", "title": "Date: \u003cbr\u003e"}, {"color": "lightblue", "id": "RIVN_2025-04-08_CONTRACT", "label": "Amendment", "shape": "dot", "title": "Date: 2025-04-08\u003cbr\u003eAmendment"}, {"color": "lightblue", "id": "RIVN_2023-04-19_CONTRACT", "label": "RIVN_2023-04-19_CONTRACT", "shape": "dot", "title": "Date: \u003cbr\u003e"}, {"color": "lightblue", "id": "RIVN_2021-05-20_CONTRACT", "label": "RIVN_2021-05-20_CONTRACT", "shape": "dot", "title": "Date: \u003cbr\u003e"}, {"color": "lightblue", "id": "F_2025-04-17_CONTRACT", "label": "TWENTY-SECOND AMENDMENT TO THE CREDIT AGREEMENT", "shape": "dot", "title": "Date: 2025-04-17\u003cbr\u003eTWENTY-SECOND AMENDMENT TO THE CREDIT AGREEMENT"}, {"color": "lightblue", "id": "LCID_2024-10-16_CONTRACT", "label": "SUBSCRIPTION AGREEMENT", "shape": "dot", "title": "Date: 2024-10-16\u003cbr\u003eSUBSCRIPTION AGREEMENT"}, {"color": "lightblue", "id": "F_2023-01-01_CONTRACT", "label": "Annual Performance Bonus Plan", "shape": "dot", "title": "Date: 2023-01-01\u003cbr\u003eAnnual Performance Bonus Plan"}, {"color": "lightblue", "id": "GM_2024-03-28_CONTRACT", "label": "Credit Agreement", "shape": "dot", "title": "Date: 2024-03-28\u003cbr\u003eCredit Agreement"}, {"color": "lightblue", "id": "GM_2024-04-06_CONTRACT", "label": "Senior Advisor Consulting Agreement", "shape": "dot", "title": "Date: 2024-04-06\u003cbr\u003eSenior Advisor Consulting Agreement"}, {"color": "lightblue", "id": "TSLA_2023-08-04_CONTRACT", "label": "Separation Agreement", "shape": "dot", "title": "Date: 2023-08-04\u003cbr\u003eSeparation Agreement"}, {"color": "lightblue", "id": "RIVN_2025-06-29_CONTRACT", "label": "letter agreement", "shape": "dot", "title": "Date: 2025-06-29\u003cbr\u003eletter agreement"}, {"color": "lightblue", "id": "RIVN_2024-11-13_CONTRACT", "label": "RIVN_2024-11-13_CONTRACT", "shape": "dot", "title": "Date: \u003cbr\u003e"}, {"color": "lightblue", "id": "LCID_2024-08-16_CONTRACT", "label": "Amendment", "shape": "dot", "title": "Date: 2024-08-16\u003cbr\u003eAmendment"}, {"color": "lightblue", "id": "RIVN_2024-11-12_CONTRACT", "label": "TRANSACTION AGREEMENT", "shape": "dot", "title": "Date: 2024-11-12\u003cbr\u003eTRANSACTION AGREEMENT"}, {"color": "lightblue", "id": "LCID_2024-03-24_CONTRACT", "label": "SUBSCRIPTION AGREEMENT", "shape": "dot", "title": "Date: 2024-03-24\u003cbr\u003eSUBSCRIPTION AGREEMENT"}, {"color": "lightblue", "id": "GM_2020-01-01_CONTRACT", "label": "RSU Award Document", "shape": "dot", "title": "Date: 2020-01-01\u003cbr\u003eRSU Award Document"}, {"color": "lightblue", "id": "GM_2024-09-30_CONTRACT", "label": "Senior Advisor Consulting Agreement", "shape": "dot", "title": "Date: 2024-09-30\u003cbr\u003eSenior Advisor Consulting Agreement"}, {"color": "lightblue", "id": "RIVN_2023-09-01_CONTRACT", "label": "Employment Agreement", "shape": "dot", "title": "Date: 2023-09-01\u003cbr\u003eEmployment Agreement"}, {"color": "lightblue", "id": "F_2026-01-01_CONTRACT", "label": "Benefit Equalization Plan", "shape": "dot", "title": "Date: 2026-01-01\u003cbr\u003eBenefit Equalization Plan"}, {"color": "lightblue", "id": "F_2025-12-10_CONTRACT", "label": "F_2025-12-10_CONTRACT", "shape": "dot", "title": "Date: \u003cbr\u003e"}, {"color": "lightblue", "id": "LCID_2023-02-07_CONTRACT", "label": "Amendment", "shape": "dot", "title": "Date: 2023-02-07\u003cbr\u003eAmendment"}, {"color": "lightblue", "id": "LCID_2022-02-28_CONTRACT", "label": "LCID_2022-02-28_CONTRACT", "shape": "dot", "title": "Date: \u003cbr\u003e"}, {"color": "lightblue", "id": "RIVN_2023-10-11_CONTRACT", "label": "Confirmation", "shape": "dot", "title": "Date: 2023-10-11\u003cbr\u003eConfirmation"}, {"color": "lightblue", "id": "F_2025-02-10_CONTRACT", "label": "Annual Performance Bonus Plan", "shape": "dot", "title": "Date: 2025-02-10\u003cbr\u003eAnnual Performance Bonus Plan"}, {"color": "lightblue", "id": "LCID_2025-02-24_CONTRACT", "label": "Amendment to Credit Facility Agreement", "shape": "dot", "title": "Date: 2025-02-24\u003cbr\u003eAmendment to Credit Facility Agreement"}, {"color": "lightblue", "id": "RIVN_2023-11-01_CONTRACT", "label": "Rental Agreement", "shape": "dot", "title": "Date: 2023-11-01\u003cbr\u003eRental Agreement"}, {"color": "lightblue", "id": "RIVN_2022-04-26_CONTRACT", "label": "RIVN_2022-04-26_CONTRACT", "shape": "dot", "title": "Date: \u003cbr\u003e"}, {"color": "lightblue", "id": "RIVN_2022-09-02_CONTRACT", "label": "RIVN_2022-09-02_CONTRACT", "shape": "dot", "title": "Date: \u003cbr\u003e"}, {"color": "lightblue", "id": "RIVN_2021-11-16_CONTRACT", "label": "RIVN_2021-11-16_CONTRACT", "shape": "dot", "title": "Date: \u003cbr\u003e"}, {"color": "lightblue", "id": "TSLA_2025-08-03_CONTRACT", "label": "Restricted Stock Agreement", "shape": "dot", "title": "Date: 2025-08-03\u003cbr\u003eRestricted Stock Agreement"}, {"color": "lightblue", "id": "TSLA_2018-01-01_CONTRACT", "label": "TSLA_2018-01-01_CONTRACT", "shape": "dot", "title": "Date: \u003cbr\u003e"}, {"color": "lightblue", "id": "RIVN_2022-01-01_CONTRACT", "label": "Executive Bonus Plan", "shape": "dot", "title": "Date: 2022-01-01\u003cbr\u003eExecutive Bonus Plan"}, {"color": "lightblue", "id": "LCID_2022-08-10_CONTRACT", "label": "LEASE AND OPTION TO PURCHASE", "shape": "dot", "title": "Date: 2022-08-10\u003cbr\u003eLEASE AND OPTION TO PURCHASE"}]);
+                  edges = new vis.DataSet([{"arrows": "to", "color": "gray", "from": "LCID_2024-10-01_CONTRACT", "title": "", "to": "LCID_2022-12-01_CONTRACT"}, {"arrows": "to", "color": "gray", "from": "GM_2023-10-03_CONTRACT", "title": "", "to": "GM_2023-03-31_CONTRACT"}, {"arrows": "to", "color": "gray", "from": "GM_2023-03-31_CONTRACT", "title": "", "to": "GM_2018-04-18_CONTRACT"}, {"arrows": "to", "color": "gray", "from": "TSLA_2025-09-03_CONTRACT", "title": "", "to": "TSLA_2019-04-18_CONTRACT"}, {"arrows": "to", "color": "gray", "from": "TSLA_2025-09-03_CONTRACT", "title": "", "to": "TSLA_2010-01-01_CONTRACT"}, {"arrows": "to", "color": "gray", "from": "GM_2025-03-25_CONTRACT", "title": "", "to": "GM_2023-03-31_CONTRACT"}, {"arrows": "to", "color": "gray", "from": "F_2024-03-14_CONTRACT", "title": "", "to": "F_1985-01-01_CONTRACT"}, {"arrows": "to", "color": "gray", "from": "RIVN_2023-09-26_CONTRACT", "title": "", "to": "RIVN_2022-05-02_CONTRACT"}, {"arrows": "to", "color": "gray", "from": "F_2024-02-07_CONTRACT", "title": "", "to": "F_2023-06-30_CONTRACT"}, {"arrows": "to", "color": "gray", "from": "LCID_2025-11-11_CONTRACT", "title": "", "to": "LCID_2021-02-22_CONTRACT"}, {"arrows": "to", "color": "gray", "from": "RIVN_2025-01-16_CONTRACT", "title": "", "to": "RIVN_2024-11-25_CONTRACT"}, {"arrows": "to", "color": "gray", "from": "F_2024-04-22_CONTRACT", "title": "", "to": "F_2006-12-15_CONTRACT"}, {"arrows": "to", "color": "gray", "from": "F_2024-04-22_CONTRACT", "title": "", "to": "F_2009-11-24_CONTRACT"}, {"arrows": "to", "color": "gray", "from": "F_2024-04-22_CONTRACT", "title": "", "to": "F_2014-04-30_CONTRACT"}, {"arrows": "to", "color": "gray", "from": "F_2024-04-22_CONTRACT", "title": "", "to": "F_2015-04-30_CONTRACT"}, {"arrows": "to", "color": "gray", "from": "F_2024-04-22_CONTRACT", "title": "", "to": "F_2021-09-29_CONTRACT"}, {"arrows": "to", "color": "gray", "from": "F_2024-04-22_CONTRACT", "title": "", "to": "F_2022-06-23_CONTRACT"}, {"arrows": "to", "color": "gray", "from": "F_2024-04-22_CONTRACT", "title": "", "to": "F_2023-04-26_CONTRACT"}, {"arrows": "to", "color": "gray", "from": "LCID_2023-08-07_CONTRACT", "title": "", "to": "LCID_2022-04-15_CONTRACT"}, {"arrows": "to", "color": "gray", "from": "LCID_2025-11-04_CONTRACT", "title": "", "to": "LCID_2024-08-04_CONTRACT"}, {"arrows": "to", "color": "gray", "from": "LCID_2024-08-04_CONTRACT", "title": "", "to": "LCID_2021-02-22_CONTRACT"}, {"arrows": "to", "color": "gray", "from": "F_2023-02-08_CONTRACT", "title": "", "to": "F_2022-12-31_CONTRACT"}, {"arrows": "to", "color": "gray", "from": "LCID_2026-01-20_CONTRACT", "title": "", "to": "LCID_2024-11-15_CONTRACT"}, {"arrows": "to", "color": "gray", "from": "RIVN_2025-04-08_CONTRACT", "title": "", "to": "RIVN_2023-04-19_CONTRACT"}, {"arrows": "to", "color": "gray", "from": "RIVN_2025-04-08_CONTRACT", "title": "", "to": "RIVN_2021-05-20_CONTRACT"}, {"arrows": "to", "color": "gray", "from": "F_2025-04-17_CONTRACT", "title": "", "to": "F_2006-12-15_CONTRACT"}, {"arrows": "to", "color": "gray", "from": "F_2025-04-17_CONTRACT", "title": "", "to": "F_2009-11-24_CONTRACT"}, {"arrows": "to", "color": "gray", "from": "F_2025-04-17_CONTRACT", "title": "", "to": "F_2014-04-30_CONTRACT"}, {"arrows": "to", "color": "gray", "from": "F_2025-04-17_CONTRACT", "title": "", "to": "F_2015-04-30_CONTRACT"}, {"arrows": "to", "color": "gray", "from": "F_2025-04-17_CONTRACT", "title": "", "to": "F_2021-09-29_CONTRACT"}, {"arrows": "to", "color": "gray", "from": "F_2025-04-17_CONTRACT", "title": "", "to": "F_2022-06-23_CONTRACT"}, {"arrows": "to", "color": "gray", "from": "F_2025-04-17_CONTRACT", "title": "", "to": "F_2023-04-26_CONTRACT"}, {"arrows": "to", "color": "gray", "from": "F_2025-04-17_CONTRACT", "title": "", "to": "F_2024-04-22_CONTRACT"}, {"arrows": "to", "color": "gray", "from": "LCID_2024-10-16_CONTRACT", "title": "", "to": "LCID_2021-02-22_CONTRACT"}, {"arrows": "to", "color": "gray", "from": "GM_2024-03-28_CONTRACT", "title": "", "to": "GM_2023-03-31_CONTRACT"}, {"arrows": "to", "color": "gray", "from": "RIVN_2025-06-29_CONTRACT", "title": "", "to": "RIVN_2024-11-13_CONTRACT"}, {"arrows": "to", "color": "gray", "from": "LCID_2024-08-16_CONTRACT", "title": "", "to": "LCID_2021-02-22_CONTRACT"}, {"arrows": "to", "color": "gray", "from": "LCID_2024-03-24_CONTRACT", "title": "", "to": "LCID_2021-02-22_CONTRACT"}, {"arrows": "to", "color": "gray", "from": "F_2026-01-01_CONTRACT", "title": "", "to": "F_2025-12-10_CONTRACT"}, {"arrows": "to", "color": "gray", "from": "LCID_2023-02-07_CONTRACT", "title": "", "to": "LCID_2022-02-28_CONTRACT"}, {"arrows": "to", "color": "gray", "from": "F_2025-02-10_CONTRACT", "title": "", "to": "F_2023-06-30_CONTRACT"}, {"arrows": "to", "color": "gray", "from": "LCID_2025-02-24_CONTRACT", "title": "", "to": "LCID_2022-02-28_CONTRACT"}, {"arrows": "to", "color": "gray", "from": "RIVN_2023-11-01_CONTRACT", "title": "", "to": "RIVN_2022-04-26_CONTRACT"}, {"arrows": "to", "color": "gray", "from": "RIVN_2023-11-01_CONTRACT", "title": "", "to": "RIVN_2022-09-02_CONTRACT"}, {"arrows": "to", "color": "gray", "from": "RIVN_2023-11-01_CONTRACT", "title": "", "to": "RIVN_2021-11-16_CONTRACT"}, {"arrows": "to", "color": "gray", "from": "TSLA_2025-08-03_CONTRACT", "title": "", "to": "TSLA_2018-01-01_CONTRACT"}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>
