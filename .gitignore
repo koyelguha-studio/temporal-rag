@@ -1,5 +1,12 @@
-pycache/\n*.pyc\n.env\n.vscode/\n*.sqlite3\n*.pem\nsecrets.json\n.venv\.DS_Store
+pycache/\n*.pyc\n.env\n.vscode/\n*.sqlite3\n*.pem\nsecrets.json\n.venv\.DS_Store\n
 .venv/
 .DS_Store/
 .experiments/
-sec-downloader/sec-edgar-filings/
+sec-edgar-filings/
+F/
+GM/
+LCID/
+lib/
+RIVN/
+TSLA/
+
