@@ -1,0 +1,115 @@
+[
+    {
+        "question": "Analyzing \u00a7 308.108 from 2001 through 2003, were there any specific changes made to subsection (c), 'Limits on dismissal as a sanction', or subsection (d), 'Procedure for imposition of sanctions'?",
+        "golden_answer": "Based on the provided texts for years 2001, 2002, and 2003, there were no changes to \u00a7 308.108, including subsections (c) and (d). Throughout this period, subsection (c) consistently outlined the five specific findings required before an administrative law judge could recommend dismissal as a sanction for delay. Likewise, subsection (d) consistently detailed the procedure for imposing sanctions, stating that the administrative law judge could act on a party's request or their own motion, but could only recommend a final order to the Board of Directors, and that no sanction could be imposed without prior notice and an opportunity to be heard.",
+        "graph_advantage": "A Vector RAG system, when asked to compare regulations over time, would retrieve multiple, nearly identical text chunks from 2001, 2002, and 2003. It would struggle to perform a reliable comparative analysis on this redundant information and could easily get confused or miss the key insight that the text is, in fact, unchanged. A Graph RAG, however, leverages the explicit temporal links between the nodes (`SEC_308.108_2001`, `SEC_308.108_2002`, `SEC_308.108_2003`). This structure allows the system to systematically traverse the timeline, compare the content of each distinct year's node, and definitively conclude that no modifications occurred, thereby correctly identifying stability rather than change.",
+        "involved_nodes": [
+            "308.108",
+            "SEC_308.108_2001",
+            "SEC_308.108_2002",
+            "SEC_308.108_2003"
+        ],
+        "category": "TEMPORAL_DRIFT"
+    },
+    {
+        "question": "According to \u00a7 335.611 (2002), what form is used as a substitute for SEC Form 3 for initial statements of beneficial ownership, and what specific SEC rule, which is also identified by its CFR codification, governs this action?",
+        "golden_answer": "Based on \u00a7 335.611 (2002), Form F-7 is to be filed in lieu of SEC Form 3. This is done pursuant to SEC rule 16a-3, which is codified at 17 CFR 240.16a-3.",
+        "graph_advantage": "Vector RAG would likely retrieve the main text of \u00a7 335.611 based on keyword similarity but would struggle to parse the distinct roles of the different entities. Graph RAG is superior as it traverses explicit, labeled relationships (e.g., 'FILED_IN_LIEU_OF', 'PURSUANT_TO', 'CODIFIED_AS') between \u00a7 335.611, Form F-7, SEC Form 3, and SEC Rule 16a-3 to precisely identify which entity substitutes another and under what specific authority.",
+        "involved_nodes": [
+            "SEC_335.611_2002",
+            "SEC_FORM_3",
+            "SEC_RULE_16A-3",
+            "17_CFR_240.16A-3"
+        ],
+        "category": "STRUCTURAL_MULTI_HOP"
+    },
+    {
+        "question": "Regarding the eligibility for an award of attorneys' fees, what were the specific net worth and employee count thresholds in 2002 for the following applicants: an individual, a sole owner of an unincorporated business, and a corporation under \u00a7 747.602?",
+        "golden_answer": "Based on the regulations in effect in 2002 under \u00a7 747.602, to be eligible for an award, an applicant had to be a prevailing party and meet the following criteria as of the date the proceeding was initiated:\n1.  **Individual:** Must have a net worth of not more than $2 million.\n2.  **Sole owner of an unincorporated business:** Must have a net worth of not more than $7 million (including both personal and business interests) and not more than 500 employees.\n3.  **Corporation (or other partnership, association, or organization):** Must have a net worth of not more than $7 million and not more than 500 employees.",
+        "graph_advantage": "A Vector RAG system searching for \"\u00a7 747.602\" might retrieve the empty base node `747.602` and fail to provide an answer. A Graph RAG system, however, understands the explicit temporal relationship between the base section `747.602` and its historical version `SEC_747.602_2002`. It can traverse this 'has_version' or 'as_of_year' edge to find the correct, time-stamped content from 2002, accurately answering a historical query that a vector-only approach would miss.",
+        "involved_nodes": [
+            "747.602",
+            "SEC_747.602_2002"
+        ],
+        "category": "TEMPORAL_DRIFT"
+    },
+    {
+        "question": "According to \u00a7 335.211 from 2003, which specific sections of the Exchange Act determine who is subject to the registration and reporting rules, and what set of SEC regulations are these persons required to follow as a result?",
+        "golden_answer": "Based on \u00a7 335.211 (2003), persons with securities subject to registration under Exchange Act sections 12(b) and 12(g), or those required to report under Exchange Act section 13, are subject to this part. These persons are required to follow the SEC regulations as codified at 17 CFR 240.12b-1 through 240.12b-36.",
+        "graph_advantage": "Vector RAG would struggle to reliably connect the requirements in \u00a7 335.211 to the specific Exchange Act sections that trigger them, as it lacks the explicit relational understanding. Graph RAG excels here by traversing the explicit citation links from \u00a7 335.211 to Exchange Act sections 12(b), 12(g), and 13, allowing it to precisely identify the source of the constraints and construct a comprehensive answer based on this structural relationship.",
+        "involved_nodes": [
+            "SEC_335.211_2003",
+            "EXCHANGE_ACT_12(B)",
+            "EXCHANGE_ACT_12(G)",
+            "EXCHANGE_ACT_13"
+        ],
+        "category": "STRUCTURAL_MULTI_HOP"
+    },
+    {
+        "question": "Analyzing \u00a7 263.101, were there any changes between 2001 and 2003 regarding the conditions under which an award for fees and expenses could be reduced or denied for a prevailing respondent?",
+        "golden_answer": "Based on the provided texts for \u00a7 263.101 from 2001, 2002, and 2003, there were no changes to the conditions for reducing or denying an award. In all three years, the regulation consistently stated: 'An award will be reduced or denied if the applicant has unduly or unreasonably protracted the proceedings.'",
+        "graph_advantage": "Vector RAG, focused on semantic similarity, would likely retrieve all three versions as relevant but would struggle to perform the explicit year-over-year comparison needed to confirm that no change occurred. It might incorrectly infer a change or just summarize one version. Graph RAG can traverse the explicit temporal links between the 2001, 2002, and 2003 nodes, directly compare their content, and definitively conclude that the rule remained stable, which is crucial for answering questions about the absence of change.",
+        "involved_nodes": [
+            "SEC_263.101_2001",
+            "SEC_263.101_2002",
+            "SEC_263.101_2003"
+        ],
+        "category": "TEMPORAL_DRIFT"
+    },
+    {
+        "question": "According to \u00a7 325.103 (2002), a bank meets the quantitative requirements for being 'Well capitalized' with a total risk-based capital ratio of 11%, a Tier 1 risk-based capital ratio of 7%, and a leverage ratio of 6%. What non-ratio-based condition, referencing other statutory authorities like Section 38 and Section 8 of the FDI Act, must this bank also satisfy to officially be deemed 'Well capitalized'?",
+        "golden_answer": "Based on \u00a7 325.103(b)(1)(iv) from 2002, in addition to meeting the capital ratio thresholds, the bank must not be subject to any written agreement, order, capital directive, or prompt corrective action directive. These directives are those issued by the FDIC pursuant to section 8 of the FDI Act (12 U.S.C. 1818), the International Lending Supervision Act of 1983 (12 U.S.C. 3907), or section 38 of the FDI Act (12 U.S.C. 1831o), or any regulation thereunder, which would require the bank to meet and maintain a specific capital level.",
+        "graph_advantage": "Vector RAG would likely retrieve \u00a7 325.103 based on keyword similarity but would fail to understand the explicit, constraining relationship between this section and the other cited statutes. A Graph RAG system can traverse the explicit citation links from the definition in \u00a7 325.103 to the nodes for 'SECTION_8_OF_THE_FDI_ACT' and 'SECTION_38'. This allows it to recognize that these external sections impose a direct condition upon the 'Well capitalized' definition, a structural dependency that vector similarity searches would miss.",
+        "involved_nodes": [
+            "SEC_325.103_2002",
+            "SECTION_38",
+            "PART_THISSUBPART",
+            "SECTION_8_OF_THE_FDI_ACT_(12_U.S.C._1818)"
+        ],
+        "category": "STRUCTURAL_MULTI_HOP"
+    },
+    {
+        "question": "Analyze the regulations in \u00a7 615.5560 from 2001 and 2002. Were there any changes to the authorization for the Financial Assistance Corporation to issue securities, specifically concerning the term of the obligations and the entity guaranteeing them?",
+        "golden_answer": "Based on the provided context for both 2001 and 2002, there were no changes to \u00a7 615.5560 regarding the Financial Assistance Corporation's authorization to issue securities. In both years, subsection (b) consistently states that the corporation is authorized to issue uncollateralized obligations \"for a term of 15 years,\" with the timely payment of principal and interest being \"guaranteed by the Secretary of the Treasury.\"",
+        "graph_advantage": "Vector RAG, when queried about \u00a7 615.5560, would likely find the content from 2001 and 2002 to be semantically identical and might only return the most recent version, treating the older one as redundant. It would struggle to perform a comparative analysis. Graph RAG excels because the nodes for each year are linked by a temporal relationship (e.g., 'successor'). This allows the system to explicitly traverse from the 2001 node to the 2002 node, retrieve both versions, and perform a direct comparison to confidently state that no change occurred, which is crucial for auditing regulatory stability.",
+        "involved_nodes": [
+            "SEC_615.5560_2001",
+            "SEC_615.5560_2002"
+        ],
+        "category": "TEMPORAL_DRIFT"
+    },
+    {
+        "question": "According to \u00a7 225.85 from 2003, a financial holding company can acquire a company that is not exclusively engaged in financial activities under certain conditions. What specific quantitative thresholds, related to both revenue and assets, must the target company meet to be considered 'substantially engaged' in permissible activities for this type of mixed acquisition?",
+        "golden_answer": "Based on \u00a7 225.85(a)(3)(ii) (2003), for a company to be considered 'substantially engaged', it must meet two quantitative thresholds: at least 85 percent of the company's consolidated total annual gross revenues must be derived from, and at least 85 percent of the company's consolidated total assets must be attributable to, the conduct of activities that are financial in nature, incidental to a financial activity, or otherwise permissible for a financial holding company.",
+        "graph_advantage": "Vector RAG might retrieve the general rule for mixed acquisitions from \u00a7 225.85(a)(3)(i) but could easily miss the precise, quantitative definition located in the subordinate paragraph (a)(3)(ii), as it's structurally related but not necessarily the most semantically similar text chunk. A Graph RAG leverages the explicit hierarchical structure of the regulation, allowing it to traverse from the rule about 'substantially engaged' companies directly to the sub-paragraph that defines the term with specific percentages, ensuring a complete and accurate answer.",
+        "involved_nodes": [
+            "SEC_225.85_2003",
+            "225.86",
+            "225.85(C)",
+            "225.85(A)(1)"
+        ],
+        "category": "STRUCTURAL_MULTI_HOP"
+    },
+    {
+        "question": "Regarding the 'Appropriate officials' in \u00a7 367.3, what specific changes were made to the roles, responsibilities, or reporting structure of the Ethics Counselor and the Corporation Ethics Committee between the 2001 and 2002 versions of the regulation?",
+        "golden_answer": "Based on the provided texts for \u00a7 367.3, there were no changes to the roles or responsibilities of the 'Appropriate officials' between 2001 and 2002. In both years, the regulation states that the Ethics Counselor is the Executive Secretary of the FDIC and is responsible for rendering suspension and exclusion decisions. The Corporation Ethics Committee is responsible for reviewing appeals of these decisions, and information regarding potential causes for suspension or exclusion is to be reported to the Office of the Executive Secretary (Ethics Section).",
+        "graph_advantage": "A Vector RAG system queried about 'changes between 2001 and 2002' would likely struggle. Because the text is identical, the vector embeddings for both years would be nearly indistinguishable, causing the system to retrieve only one version (likely the most recent) or be unable to differentiate them for a comparison. Graph RAG excels here because it can model explicit temporal relationships. It can traverse a 'HAS_NEXT_VERSION' edge from the 2001 node to the 2002 node, retrieve both documents intentionally, perform a direct comparison, and confidently conclude that no textual change occurred.",
+        "involved_nodes": [
+            "SEC_367.3_2001",
+            "SEC_367.3_2002"
+        ],
+        "category": "TEMPORAL_DRIFT"
+    },
+    {
+        "question": "According to \u00a7 560.41 from 2001, a Federal savings association's authority to conduct finance leasing for residential real estate is granted under HOLA section 5(c)(1)(B). What specific financial requirements, as defined within \u00a7 560.41, must such a transaction meet to be classified as a 'full-payout lease'?",
+        "golden_answer": "Based on \u00a7 560.41(b)(2), for a lease to be considered a 'full-payout lease', it must meet two financial conditions:\n1. The unguaranteed portion of the estimated residual value, which the association relies on to recover its investment and financing cost, cannot exceed 25% of the property's original cost to the lessor.\n2. In general, the scheduled lease payments must provide at least 75% of the principal and interest payments that would be received if the lease were structured as a market-rate loan.",
+        "graph_advantage": "A Vector RAG system might retrieve the clause mentioning HOLA section 5(c)(1)(B) from subsection (c)(1) and the definition of 'full-payout lease' from subsection (b)(2) as two separate, semantically relevant chunks. However, it lacks the explicit structural understanding that these are sub-parts of the same parent regulation, \u00a7 560.41, and that the authority mentioned in one is directly qualified by a definition in the other. A Graph RAG system can traverse the document's hierarchical structure (from \u00a7 560.41 to its subsections) and its citation links (from \u00a7 560.41(c)(1) to HOLA_5(c)(1)(B)) to precisely assemble the context from these interconnected but physically separate parts of the text, ensuring the answer correctly links the granted authority to its specific definitional constraints.",
+        "involved_nodes": [
+            "SEC_560.41_2001",
+            "560.41",
+            "560.41(C)(2)(I)",
+            "HOLA_5(C)(1)(B)"
+        ],
+        "category": "STRUCTURAL_MULTI_HOP"
+    }
+]
